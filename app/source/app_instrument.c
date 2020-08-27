@@ -170,8 +170,7 @@ void pro_init(void)
 	memset(&g_tRecv_frame_data, 0, sizeof(g_tRecv_frame_data));
 	g_tRecv_frame_data.lock = PRO_FRAME_DATA_UNLOCK;
 	airp = air_box_data_init();
-	
-	TRACE(" :%d\r\n",sizeof(AIR_BOX));
+	TRACE("struct size :%d\r\n",sizeof(AIR_BOX));
 
 }
 
