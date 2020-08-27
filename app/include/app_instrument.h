@@ -3,7 +3,7 @@
 
 #include "include.h"
 
-/*add define*/
+/*define*/
 #define  UART3_RX_BUF_LEN                      512	
 #define  UART_RESEND_TIMES                     10
 #define  UART_RESEND_TIME_INTERVAL             25
