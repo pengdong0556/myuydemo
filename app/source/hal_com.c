@@ -359,8 +359,7 @@ void USART_SEND(USART_TypeDef* USARTx, uint8_t *Data,uint8_t len)
 //	USART_GetFlagStatus(USARTx, USART_FLAG_TC);
 	while(len--)
 	{
-//		USART_SendData(USARTx, *Data++);
-//		while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+
 		Usart_Sendbyte(USARTx,*Data++);
 		
 	}
