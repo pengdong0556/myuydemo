@@ -149,7 +149,7 @@ static void rs485_poll_handle(void)
 				 
 			timer_restart(&rs485_poll);
 			get_data_cmd_to_down(0x0,0xf);
-			TRACE("rs485_poll\r\n");
+			//TRACE("rs485_poll\r\n");
          
 		}
 	
@@ -297,6 +297,7 @@ void air_box_data_handler(T_pro_frame * data)
 			 
 		 }
 	}
+	TRACE("air_box_data_from_modbus: \r\n");
 	sprintf(str,"%3.1f%s",airp->TEMP,deg);
 	TRACE("\r\n");
 	TRACE("    TVOC     PM2.5     CO2\r\n");
