@@ -101,6 +101,7 @@ static  void  App_TaskStart(void* p_arg)
 	 App_EventCreate();
    App_TaskCreate();
    TRACE("system init ok\r\n");
+   TRACE("project is ready!!!18:34\r\n");
 	 OSTaskSuspend(APP_TASK_START_PRIO);	     //suspend but not delete
 	
 }
