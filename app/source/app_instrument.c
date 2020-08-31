@@ -315,8 +315,8 @@ void pro_read_frame_from_data_buffer(void)
 {
 	static uint8_t step = STEP_HEADER;
 	static uint8_t len_req = PRO_FRAME_HEADER_TO_LEN_DOMAIN_LEN;
-	uint16_t crc16 = 0;
-	uint16_t crc16_2 = 0;
+	uint16_t actual_chk = 0;
+	uint16_t expected_chk = 0;
 
 	
 	
@@ -395,11 +395,11 @@ void pro_read_frame_from_data_buffer(void)
 	
 	      //node->data[tmp_len + 1] =  crc16 & 0xff ;/*modbus crc crc16L*/ 
 			
-        crc16 = Get_Crc16(&g_uBuf_tmp[0], (len_req - 2));
-				crc16_2 =  g_uBuf_tmp[len_req - 2] << 8 | g_uBuf_tmp[len_req - 1];
+        actual_chk = Get_Crc16(&g_uBuf_tmp[0], (len_req - 2));
+				expected_chk =  g_uBuf_tmp[len_req - 2] << 8 | g_uBuf_tmp[len_req - 1];
 			              
 					 
-				if( crc16 == crc16_2) 
+				if( actual_chk == expected_chk) 
 				{
 						
 						g_tRecv_frame_data.cmd = g_uBuf_tmp[1];

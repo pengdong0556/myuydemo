@@ -6,7 +6,8 @@ struct timer rs485_poll;
 
 
 
-clock_time_t GetRunTime(void)
+clock_time_t 
+GetRunTime(void)
 {
 	int runtime; 
 
