@@ -382,8 +382,7 @@ void pro_read_frame_from_data_buffer(void)
 			 
 			  pro_read_data_from_buf_only(&g_uBuf_tmp[0], len_req );
 			
-//			  for (i = 0 ; i < len_req ; i++)
-//			  TRACE(" 0x%x ", g_uBuf_tmp[i]);
+			  
         
 			
 			  //TRACE("\r\n");
@@ -406,7 +405,7 @@ void pro_read_frame_from_data_buffer(void)
 						
 						
 					
-						//TRACE("rs485_rec_data_ok\r\n"); 
+						TRACE("rs485_rec_data_ok\r\n"); 
 						
 						g_tRecv_frame_data.len = g_uBuf_tmp[2];
 						
