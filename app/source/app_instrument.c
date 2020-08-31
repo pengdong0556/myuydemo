@@ -213,7 +213,7 @@ static void check_resp(uint8_t cmd)
 	if(g_sending_node != NULL)
 	{
 		
-		//TRACE("cmd: %0x,g_sending_node->data[1] :%x\r\n",cmd,g_sending_node->data[1]);
+		TRACE("cmd: %0x\r\n",cmd);
 		
 		if(cmd == g_sending_node->data[1])
 		{
