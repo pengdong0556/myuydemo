@@ -149,7 +149,7 @@ static void rs485_poll_handle(void)
 				 
 			timer_restart(&rs485_poll);
 			get_data_cmd_to_down(0x0,0xf);
-			//TRACE("rs485_poll\r\n");
+			TRACE("rs485_poll\r\n");
          
 		}
 	
