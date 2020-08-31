@@ -14,7 +14,7 @@ AIR_BOX       *airp;
 AIR_BOX        air;
 const char     deg[] = {0xa1,0xe3,0};
 /*add+cmd+dat[0] .... dat[n]+crc16H+crc16L*/
-uint8_t pro_add_data_to_send_list(uint8_t add,uint8_t cmd, uint8_t * data, uint32_t len)
+static uint8_t pro_add_data_to_send_list(uint8_t add,uint8_t cmd, uint8_t * data, uint32_t len)
 {
   
 	
@@ -75,7 +75,7 @@ uint8_t pro_add_data_to_send_list(uint8_t add,uint8_t cmd, uint8_t * data, uint3
 	
 	return 0;
 }
-void send_data_from_list(void)
+static void send_data_from_list(void)
 {
 	
 	static uint32_t time_cnt = 7;	
@@ -126,7 +126,7 @@ void send_data_from_list(void)
 	}
 }
 
-void get_data_cmd_to_down(uint8_t Src,uint16_t len)
+static void get_data_cmd_to_down(uint8_t Src,uint16_t len)
 {
   
 	uint8_t buf[4] = { 0 };
@@ -156,14 +156,14 @@ static void rs485_poll_handle(void)
 	
 	
 }
-AIR_BOX  *air_box_data_init(void)
+static AIR_BOX  *air_box_data_init(void)
 {
 	
 	return &air;
 	
 }
 
-void pro_init(void)
+static void pro_init(void)
 {
 	
 	
@@ -174,41 +174,41 @@ void pro_init(void)
 
 }
 
-void rs485_recv_start(void)
+static void rs485_recv_start(void)
 {
 	
 	rb_init(&g_uart3_rx, &g_uart3_rx_buf[0], UART3_RX_BUF_LEN);
 	RS485_RECV;
 }
 
-void pro_del_buf_data(uint32_t size)
+static void pro_del_buf_data(uint32_t size)
 {
 	rb_del_data(&g_uart3_rx, size);
 }
 
-uint32_t pro_buf_data_len(void)
+static uint32_t pro_buf_data_len(void)
 {
 	return rb_buf_len(&g_uart3_rx);
 }
 
-void pro_clear_timeout_cnt(void)
+static void pro_clear_timeout_cnt(void)
 {
 	//g_recv_timeout = 0;
 }
 
 
 
-void pro_clear_frame_data_lock(void)
+static void pro_clear_frame_data_lock(void)
 {
 	g_tRecv_frame_data.lock = PRO_FRAME_DATA_UNLOCK;
 }
 
-void pro_read_data_from_buf_only(uint8_t * buf, uint32_t len)
+static void pro_read_data_from_buf_only(uint8_t * buf, uint32_t len)
 {
 	rb_read_only(&g_uart3_rx, buf, len);
 }
 
-void check_resp(uint8_t cmd)
+static void check_resp(uint8_t cmd)
 {
 	if(g_sending_node != NULL)
 	{
@@ -224,7 +224,7 @@ void check_resp(uint8_t cmd)
 }
 
 
-void air_box_data_handler(T_pro_frame * data)
+static void air_box_data_handler(T_pro_frame * data)
 {
 	
 	
@@ -311,7 +311,7 @@ void air_box_data_handler(T_pro_frame * data)
 }
 
 
-void pro_read_frame_from_data_buffer(void)
+static void pro_read_frame_from_data_buffer(void)
 {
 	static uint8_t step = STEP_HEADER;
 	static uint8_t len_req = PRO_FRAME_HEADER_TO_LEN_DOMAIN_LEN;
